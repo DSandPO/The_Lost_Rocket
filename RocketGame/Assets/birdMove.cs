@@ -11,7 +11,6 @@ public class birdMove : MonoBehaviour {
 	//public Vector3 flapVelocity;
 	//public float maxSpeed = 5f;
 	public float forwardSpeed = 1f;
-    public float startSpeed = 5f;
 	public float flapSpeed = 10f;
 
 	bool didFlap = false;
@@ -32,8 +31,8 @@ public class birdMove : MonoBehaviour {
 			Debug.LogError ("didnt find animator");
 		}
 
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * startSpeed);
-    }
+        GetComponent<Rigidbody2D>().AddForce (Vector2.up * forwardSpeed);
+	}
 
 	// graphic input update
 	void Update() {
@@ -47,8 +46,7 @@ public class birdMove : MonoBehaviour {
 		}
 		else {
 			if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-                animator.SetTrigger("playerBlock2_0");
-                didFlap = true;
+				didFlap = true;
 			}
 		}
 	}
@@ -60,14 +58,8 @@ public class birdMove : MonoBehaviour {
 			return;
 		
 
-		GetComponent<Rigidbody2D>().AddForce (Vector2.up * forwardSpeed);
-
-        if(didFlap)
-        {
-
-        }
-
-/*		if (didFlap) {
+		//GetComponent<Rigidbody2D>().AddForce (Vector2.up * forwardSpeed);
+		if (didFlap) {
 			GetComponent<Rigidbody2D>().AddForce (Vector2.up * flapSpeed);
 			animator.SetTrigger ("DoFlap");
 			didFlap = false;
@@ -79,7 +71,6 @@ public class birdMove : MonoBehaviour {
 			float angle = Mathf.Lerp (0, 0, -GetComponent<Rigidbody2D>().velocity.y / 2f);
 			transform.rotation = Quaternion.Euler (0, 0, angle);
 		}
-*/
 
 	}
 

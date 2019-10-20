@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class cameraTracksPlayer : MonoBehaviour {
 
