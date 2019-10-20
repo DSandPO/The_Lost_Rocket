@@ -47,7 +47,8 @@ public class birdMove : MonoBehaviour {
 		}
 		else {
 			if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-				didFlap = true;
+                animator.SetTrigger("playerBlock2_0");
+                didFlap = true;
 			}
 		}
 	}
@@ -60,7 +61,13 @@ public class birdMove : MonoBehaviour {
 		
 
 		GetComponent<Rigidbody2D>().AddForce (Vector2.up * forwardSpeed);
-		if (didFlap) {
+
+        if(didFlap)
+        {
+
+        }
+
+/*		if (didFlap) {
 			GetComponent<Rigidbody2D>().AddForce (Vector2.up * flapSpeed);
 			animator.SetTrigger ("DoFlap");
 			didFlap = false;
@@ -72,6 +79,7 @@ public class birdMove : MonoBehaviour {
 			float angle = Mathf.Lerp (0, 0, -GetComponent<Rigidbody2D>().velocity.y / 2f);
 			transform.rotation = Quaternion.Euler (0, 0, angle);
 		}
+*/
 
 	}
 
