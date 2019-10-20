@@ -5,8 +5,11 @@ using System.Collections.Generic;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    public GameObject temp;
+
     public Vector3 laneOne;
-    public GameObject Player;
+    public GameObject player;
     public Vector3 startPos;
     public Vector3 endPos;
     public Vector3 rightPos;
@@ -17,13 +20,15 @@ public class PlayerMove : MonoBehaviour
     public bool keyHit = false;
     public bool dRight = false;
     public bool dLeft = false;
+    public bool newRight = false;
+    public bool newLeft = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        startPos = Player.transform.position;
-        rightPos = Player.transform.position + Vector3.right * distance;
-        leftPos = Player.transform.position + Vector3.left * distance;
+        startPos = player.transform.position;
+        rightPos = player.transform.position + Vector3.right * distance;
+        leftPos = player.transform.position + Vector3.left * distance;
 
     }
 
@@ -34,12 +39,23 @@ public class PlayerMove : MonoBehaviour
         {
             keyHit = true;
             dLeft = true;
+            if (startPos.x < 0)
+            {
+                Instantiate(temp, new Vector3((distance * 2), startPos.y, 0), Quaternion.identity);
+                newRight = true;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
             keyHit = true;
             dRight = true;
+            if (startPos.x > 0)
+            {
+                Instantiate(temp, new Vector3((distance * 2) * -1, startPos.y, 0), Quaternion.identity);
+                newLeft = true;
+            }
+
         }
 
         if (keyHit == true)
@@ -59,15 +75,29 @@ public class PlayerMove : MonoBehaviour
             }
 
             float Perc = currentLerpTime / lerpTime;
-            Player.transform.position = Vector3.Lerp(startPos, endPos, Perc);
-            if(Player.transform.position == endPos)
+            player.transform.position = Vector3.Lerp(startPos, endPos, Perc);
+
+            
+
+            if(player.transform.position == endPos)
             {
+
+                if (newLeft == true)
+                {
+                    player = temp;
+                    Destroy(temp);
+                }
+                if (newRight == true)
+                {
+                    player = temp;
+                    Destroy(temp);
+                }
                 keyHit = false;
                 dRight = false;
                 dLeft = false;
                 startPos = endPos;
-                rightPos = Player.transform.position + Vector3.right * distance;
-                leftPos = Player.transform.position + Vector3.left * distance;
+                rightPos = player.transform.position + Vector3.right * distance;
+                leftPos = player.transform.position + Vector3.left * distance;
                 currentLerpTime = 0;
                 Debug.Log("hi");
 
