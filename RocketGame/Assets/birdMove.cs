@@ -11,6 +11,7 @@ public class birdMove : MonoBehaviour {
 	//public Vector3 flapVelocity;
 	//public float maxSpeed = 5f;
 	public float forwardSpeed = 1f;
+    public float startSpeed = 5f;
 	public float flapSpeed = 10f;
 
 	bool didFlap = false;
@@ -30,7 +31,9 @@ public class birdMove : MonoBehaviour {
 		if (animator == null) {
 			Debug.LogError ("didnt find animator");
 		}
-	}
+
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * startSpeed);
+    }
 
 	// graphic input update
 	void Update() {
