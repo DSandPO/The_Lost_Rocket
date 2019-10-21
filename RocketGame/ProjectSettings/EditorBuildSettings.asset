@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/wocket.unity
     guid: 008f5b96a64747d47aec3bef8f384feb
+  - enabled: 1
+    path: Assets/cubedash.unity
+    guid: a75a902934f8cc54e9b2ebf90b5317f0
   m_configObjects: {}

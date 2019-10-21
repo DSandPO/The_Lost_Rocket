@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 1975325824057685313}
   - component: {fileID: 1975325824057685318}
   - component: {fileID: 1975325824057685319}
+  - component: {fileID: 4807129722479390842}
   - component: {fileID: 1975325824057685314}
   - component: {fileID: 1975325824057685315}
   - component: {fileID: 1975325824057685312}
   - component: {fileID: 1975325824057685325}
   - component: {fileID: 1975325824057685324}
+  - component: {fileID: 1290032744344359861}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -105,6 +107,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4807129722479390842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975325824057685316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5569c274d4e51324aaae8e6f20d08376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectSwipeOnlyAfterRelease: 0
+  minDistanceForSwipe: 20
 --- !u!114 &1975325824057685314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +211,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1099193b6170474c800cbb344ad7c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaneOne: {x: 0, y: 0, z: 0}
-  Player: {fileID: 1975325824057685316}
+  temp: {fileID: 0}
+  laneOne: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  rightPos: {x: 0, y: 0, z: 0}
+  leftPos: {x: 0, y: 0, z: 0}
   distance: 3
   lerpTime: 0.2
+  currentLerpTime: 0
+  keyHit: 0
+  dRight: 0
+  dLeft: 0
+  newRight: 0
+  newLeft: 0
+--- !u!114 &1290032744344359861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975325824057685316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 028472b123b82d84581ce50c233c21b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
